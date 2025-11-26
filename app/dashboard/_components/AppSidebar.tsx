@@ -14,11 +14,11 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import Image from 'next/image'
-import { url } from 'inspector'
 import { Database, Gem, Headphones, LayoutDashboard, UserIcon, WalletCards } from 'lucide-react'
-import { UserAvatar } from '@clerk/nextjs'
 import Link from 'next/link'
 import { UserDetailContext } from '@/context/UserDetailContext'
+import { Button } from '@/components/ui/button'
+import { usePathname } from 'next/navigation'
  
 const menuOptions = [
   {
@@ -52,6 +52,7 @@ const menuOptions = [
 ]
 
 function AppSidebar() {
+  const path=usePathname();
   const { open } = useSidebar();
    const {userDetail,setUserDetail}=useContext(UserDetailContext);
   return (
@@ -70,7 +71,7 @@ function AppSidebar() {
             <SidebarMenu>
               {menuOptions.map((menu,index) => (
                <SidebarMenuItem key={index}>
-                <SidebarMenuButton asChild size={open ? 'lg' : 'default'}>
+                <SidebarMenuButton  isActive={path===menu.url} asChild size={open ? 'lg' : 'default'}>
                 <Link href={menu.url}>
                 <menu.icon />
                 <span>{menu.title}</span>
@@ -89,7 +90,7 @@ function AppSidebar() {
            <Gem/>
        {open && <h2 className='font-bold'>Remaining Credits {userDetail?.token}</h2>}
        </div>
-   
+           {open && <Button>Upgrade To Unlimited Credits</Button>}
         </SidebarFooter>
     </Sidebar>
   )
