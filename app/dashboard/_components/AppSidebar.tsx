@@ -61,7 +61,7 @@ function AppSidebar() {
       <SidebarHeader >
         <div className='flex gap-2 ites-center'>
         <Image src="/logo.svg" alt="Logo" width={35} height={35} />
-        {open&&<h2 className='font-bold text-lg'>AI Agent Module</h2>}
+        {open&&<h2 className='font-bold text-lg'>AI Agent</h2>}
         </div>
         </SidebarHeader>
         <SidebarGroupLabel><h3 className='text-lg font-bold '>APPLICATION</h3></SidebarGroupLabel>

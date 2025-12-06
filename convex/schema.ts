@@ -7,5 +7,13 @@ export default defineSchema({
         email: v.string(),
         subscriber:v.optional(v.string()),
         token:v.number()
-    })
+    }),
+    AgentTable: defineTable({
+        name: v.string(),
+        userId: v.string(),
+        config:v.optional(v.any()),
+        published:v.boolean()
+    }
+            
+        )
 });
